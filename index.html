@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel Infinito</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background: rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .carousel-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            height: 300px;
+        }
+        
+        .track {
+            display: flex;
+            animation: scrolling 20s linear infinite;
+            height: 100%;
+        }
+        
+        .carousel:hover .track {
+            animation-play-state: paused;
+        }
+        
+        .group {
+            display: flex;
+            gap: 20px;
+            height: 100%;
+            min-width: 100%;
+            padding: 0 10px;
+        }
+        
+        .card {
+            flex: 1;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            min-width: 0;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes scrolling {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background: #4e54c8;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            background: #6a70e0;
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #6a70e0;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            color: #ffcc00;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .carousel {
+                height: 250px;
+            }
+            
+            .card {
+                font-size: 3.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Carrossel Infinito</h1>
+            <p>Implementação correta de um carrossel contínuo com efeito infinito</p>
+            
+            <div class="description">
+                <p>Este carrossel usa uma técnica com duplicação de conteúdo para criar um efeito de rolagem contínua sem interrupções. Passe o mouse sobre o carrossel para pausar a animação.</p>
+            </div>
+        </header>
+        
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="track">
+                    <div class="group">
+                        <div class="card"><img src="1.jpeg" alt=""></div>
+                        <div class="card"><img src="2.jpeg" alt=""></div>
+                        <div class="card"><img src="3.jpeg" alt=""></div>
+                    </div>
+                    <div class="group" aria-hidden="true">
+                        <div class="card"><img src="6.jpeg" alt=""></div>
+                        <div class="card"><img src="4.jpeg" alt=""></div>
+                        <div class="card"><img src="5.jpeg" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button onclick="document.querySelector('.track').style.animationPlayState = 'paused'">Pausar</button>
+                <button onclick="document.querySelector('.track').style.animationPlayState = 'running'">Continuar</button>
+                <button onclick="document.querySelector('.track').style.animationDuration = '10s'">Acelerar</button>
+                <button onclick="document.querySelector('.track').style.animationDuration = '30s'">Desacelerar</button>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>Responsivo</h3>
+                <p>Adapta-se perfeitamente a diferentes tamanhos de tela</p>
+            </div>
+            <div class="feature-card">
+                <h3>Suave</h3>
+                <p>Animação fluida com efeito infinito contínuo</p>
+            </div>
+            <div class="feature-card">
+                <h3>Interativo</h3>
+                <p>Controles para pausar, continuar e ajustar velocidade</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Desenvolvido com CSS puro - Técnica de carrossel infinito corrigida</p>
+    </footer>
+
+    <script>
+        // Adicionando alguns elementos dinâmicos apenas para demonstração
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#1A535C', '#FF9F1C'];
+            
+            cards.forEach(card => {
+                // Adiciona gradiente aleatório
+                const color1 = colors[Math.floor(Math.random() * colors.length)];
+                const color2 = colors[Math.floor(Math.random() * colors.length)];
+                card.style.background = `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+                
+                // Adiciona efeito de inclinação ao passar o mouse
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const angleY = (x - centerX) / 20;
+                    const angleX = (centerY - y) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.05)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
